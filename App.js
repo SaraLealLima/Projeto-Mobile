@@ -1,13 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import TelaLogin from './views/telaLogin'
+import Home from './views/Home'
+import Produtos from './views/Produtos'
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer initialRouteName='TelaLogin' headerMode='screen' >
+      <Stack.Navigator>
+        <Stack.Screen name="TelaLogin" component={TelaLogin} options={{ title: 'Tela de Login' }} />
+        <Stack.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+        <Stack.Screen name="Produtos" component={Produtos} options={{ title: 'Produtos' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
 
